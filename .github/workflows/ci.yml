@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - python-version: 3.8
+            tox-env: py38
+          - python-version: 3.8
+            tox-env: flake8
+
+    name: "Python ${{ matrix.python-version }} - ${{ matrix.tox-env }}"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Cache tox environments
+        uses: actions/cache@v3
+        with:
+          path: .tox
+          # Refresh the cache if the following files change
+          key: "tox-${{ matrix.python-version }}-${{ matrix.tox-env }}-${{ hashFiles('tox.ini', 'setup.py', 'scripts/tox_install_ecommerce_run_pytest.sh', 'requirements/ecommerce-maple.master.txt', 'payfort-test.txt') }}"
+
+      - name: Install Dependencies
+        run: |
+          pip install tox
+      - name: "Python ${{ matrix.python-version }} - ${{ matrix.tox-env }}"
+        run: "tox -e ${{ matrix.tox-env }}"
