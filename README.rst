@@ -50,7 +50,7 @@ Or run the unit tests only::
 
 To run quality quality::
 
-   $ make flake8
+   $ make quality
 
 
 ``tox`` can be used directly to run a specific, for example::
