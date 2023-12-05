@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  ecommerce:
+    volumes:
+      - PAYFORT_PACKAGE_DIR:/openedx/ecommerce-payfort
+      - ECOMMERCE_DIR:/openedx/ecommerce

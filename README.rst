@@ -32,9 +32,6 @@ When the testing account is used,
 Development and Testing
 #######################
 
-TBD: Add devstck and Tutor instructions.
-
-
 To run tests locally in your machine, you need to install the following dependencies::
 
    $ pip install tox
@@ -56,6 +53,26 @@ To run quality quality::
 ``tox`` can be used directly to run a specific, for example::
 
    $ tox -e py38 -- tests/unit/test_payfort_utils.py
+
+
+Tutor Devstack Installation Instructions
+########################################
+
+You need to have `tvm <https://github.com/eduNEXT/tvm/>`_ installed in your machine as well as
+`Tutor requirements such as Docker <https://docs.tutor.edly.io/install.html#requirements>`_.
+
+Run the following commands::
+
+    cd ~/work/
+    tvm install v13.3.2
+    tvm project init payfort v13.3.2  # Create a new Tutor project with Maple Open edX release
+    cd payfort
+    source .tvm/bin/activate  # Use `tutor`
+    git clone git@github.com:Zeit-Labs/ecommerce-payfort.git
+    git clone --branch=open-release/maple.nelp git@github.com:eduNEXT/ecommerce.git
+    git clone --branch=nelp/maple git@github.com:eduNEXT/tutor-discovery discovery
+    bash ecommerce-payfort/tutor_plugin/tutor_quickstart.sh
+
 
 
 Installation and usage
