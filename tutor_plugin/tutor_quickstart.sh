@@ -4,13 +4,13 @@ SCRIPT_DIR="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 PAYFORT_PACKAGE_DIR="$(dirname "$SCRIPT_DIR")"
 ECOMMERCE_DIR="$(dirname "$PAYFORT_PACKAGE_DIR")/ecommerce"
 
-##if [ -z "$TVM_PROJECT_ENV" ]; then
-##  echo "Error: activate tvm project environment first: "
-##  echo
-##  echo "  $ source .tvm/bin/activate"
-##  echo
-##  exit 1
-##fi
+if [ -z "$TVM_PROJECT_ENV" ]; then
+  echo "Error: activate tvm project environment first: "
+  echo
+  echo "  $ source .tvm/bin/activate"
+  echo
+  exit 1
+fi
 
 
 set -x
