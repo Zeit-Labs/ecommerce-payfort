@@ -29,8 +29,34 @@
         </div>
         {# This adds the header for the page. #}
         {% include 'edx/partials/_student_navbar.html' %}
+        
+        
         <form action="{{ payment_result_url }}" class="paymentWidgets" data-brands="{{ brands }}">
         </form>
+        
+        {# This form is a placeholder to be filled programmatically from the View class #}
+        {# The values will also include details about the course being bought #}
+        {# Refer to https://paymentservices-reference.payfort.com/docs/api/build/index.html?python#standard-merchant-page-integration-request #}
+
+        <form name="aps_form" action="https://sbcheckout.payfort.com/FortAPI/paymentPage" method="POST" target="standard_checkout_iframe">
+            <input type="hidden" name="service_command" value="TOKENIZATION">
+            <input type="hidden" name="language" value="">
+            <input type="hidden" name="merchant_identifier" value="">
+            <input type="hidden" name="access_code" value="">
+            <input type="hidden" name="signature" value="">
+            <input type="hidden" name="return_url" value="">
+            <input type="hidden" name="merchant_reference" value="">
+            
+            <input value="Show Payment Form" type="submit" id="form1">
+        </form>
+
+        <center>   
+            <iframe name="standard_checkout_iframe" style="border:6px dotted green" src = "" width="600" height="500"></iframe>
+        </center>
+        
+
+        <div id="standard_redirect_message" style="display: none;"></div>
+
         <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
         {% compress js %}
             <script src="{% static 'bower_components/requirejs/require.js' %}"></script>
