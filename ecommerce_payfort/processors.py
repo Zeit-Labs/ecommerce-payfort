@@ -4,6 +4,7 @@ PayFort payment processor.
 
 import logging
 
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from oscar.apps.payment.exceptions import GatewayError
 
@@ -36,6 +37,17 @@ class PayFort(BasePaymentProcessor):
 
     NAME = 'payfort'
     CHECKOUT_TEXT = _("Checkout with credit card")
-
+    CHECKOUT_ENDPOINT = '/paymentPage/'
+    
     def __init__(self, site):
+        super(PayFort, self).__init__(site)
+        configuration = self.configuration
+        self.merchant_identifier = configuration['merchant_identifier']
+        self.access_code = configuration['access_code']
+        self.SHARequestPhrase = configuration['SHARequestPhrase']
+        self.SHAResponsePhrase = configuration['SHAResponsePhrase']
+        self.SHAType = configuration['SHAType']
+        self.payfort_base_api_url = configuration.get('payfort_base_api_url', 'https://sbcheckout.payfort.com/FortAPI/paymentPage')
+        self.return_url = reverse('hyperpay:payment-form'),
+
         self.site = site
