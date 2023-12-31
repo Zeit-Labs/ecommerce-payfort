@@ -58,14 +58,18 @@ To run quality quality::
 Tutor Devstack Installation Instructions
 ########################################
 
-You need to have
+You need to have `tvm <https://github.com/eduNEXT/tvm/>`_ installed in your machine as well as
 `Tutor requirements such as Docker <https://docs.tutor.edly.io/install.html#requirements>`_.
 
 Run the following commands::
 
     cd ~/work/
-    sudo pip install tutor==13.3.2
-    mkdir payfort && cd payfort
+    tvm install v13.3.1
+    tvm project init payfort v13.3.1  # Create a new Tutor project with Maple Open edX release
+    cd payfort
+    source .tvm/bin/activate  # Use `tutor`
+    # Install Tutor v13.3.2 to fix a bug that's not released on Tutor GitHub tags
+    pip install tutor==13.3.2
     git clone git@github.com:Zeit-Labs/ecommerce-payfort.git
     git clone --branch=open-release/maple.nelp git@github.com:eduNEXT/ecommerce.git
     git clone --branch=nelp/maple git@github.com:eduNEXT/tutor-discovery discovery
