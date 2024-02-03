@@ -28,6 +28,7 @@ class PayFortPaymentPageView(View):
     """
     template_name = 'payment/payfort.html'
 
+    @method_decorator(csrf_exempt)
     def post(self, request):
         """
         Handles the POST request.

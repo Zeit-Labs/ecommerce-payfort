@@ -14,6 +14,6 @@ PAYMENT_PROCESSOR_CONFIG = {
             '3ds_modal': True,
             'debug_mode': False,
             'locale': 'en',
-        }
-    }
+            'payfort_base_api_url': 'https://sbcheckout.payfort.com/FortAPI/paymentPage'
+    }}
 }
