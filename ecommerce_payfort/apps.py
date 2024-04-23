@@ -1,6 +1,4 @@
-"""
-PayFort payment processor Django application initialization.
-"""
+"""PayFort payment processor Django application initialization."""
 from django.apps import AppConfig
 
 

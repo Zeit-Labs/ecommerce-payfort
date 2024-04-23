@@ -13,9 +13,9 @@ jobs:
       matrix:
         include:
           - python-version: 3.8
-            tox-env: py38
+            tox-env: tests
           - python-version: 3.8
-            tox-env: flake8
+            tox-env: quality
 
     name: "Python ${{ matrix.python-version }} - ${{ matrix.tox-env }}"
     steps:
@@ -27,14 +27,15 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Cache tox environments
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
+          save-always: true
           path: .tox
           # Refresh the cache if the following files change
-          key: "tox-${{ matrix.python-version }}-${{ matrix.tox-env }}-${{ hashFiles('tox.ini', 'setup.py', 'scripts/tox_install_ecommerce_run_pytest.sh', 'requirements/ecommerce-maple.master.txt', 'payfort-test.txt') }}"
+          key: "tox-${{ matrix.python-version }}-${{ matrix.tox-env }}-${{ hashFiles('tox.ini', 'setup.py', 'scripts/tox_install_ecommerce_run_pytest.sh', 'requirements/ecommerce-palm.master.txt', 'quality.txt') }}"
 
       - name: Install Dependencies
         run: |
           pip install tox
       - name: "Python ${{ matrix.python-version }} - ${{ matrix.tox-env }}"
-        run: "tox -e ${{ matrix.tox-env }}"
+        run: "tox -e py38-${{ matrix.tox-env }}"

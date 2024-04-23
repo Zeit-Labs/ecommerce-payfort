@@ -17,14 +17,23 @@ export PYTHONWARNINGS=ignore  # Suppress warnings from `openedx/ecommerce` code
 
 pip install -e .  # Install ecommerce_payfort into the virtualenv
 
-if [ ! -d ".tox/ecommerce-maple.master" ]; then
-    git clone --single-branch --branch=open-release/maple.master --depth=1 https://github.com/openedx/ecommerce.git .tox/ecommerce-maple.master
+if [ ! -d ".tox/ecommerce-palm.master" ]; then
+    git clone --single-branch --branch=open-release/palm.master --depth=1 https://github.com/openedx/ecommerce.git .tox/ecommerce-palm.master
 fi
 
-rm -rf .tox/ecommerce-maple.master/ecommerce_payfort
-cat settings/payfort.py > .tox/ecommerce-maple.master/ecommerce/settings/payfort.py
+cat settings/test_settings.py > .tox/ecommerce-palm.master/ecommerce/settings/payfort.py
 
-cd .tox/ecommerce-maple.master/ecommerce
+#rm -rf .tox/ecommerce/assets
+#cp -r scripts/fake_assets/ .tox/ecommerce/assets
 
+export tests_root_dir=$(pwd)
 
-"$@"  # Arguments passed to this script
+mkdir -p .tox/ecommerce
+ln -s -f ../ecommerce-palm.master/ecommerce .tox/ecommerce/ecommerce
+export PYTHONPATH="$PYTHONPATH:$tests_root_dir/.tox/ecommerce"
+echo "PYTHONPATH=$PYTHONPATH"
+
+echo "***********************************************************----"
+echo "* Running command from tox file:" "$@"
+echo "***********************************************************----"
+eval "$@"

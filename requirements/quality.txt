@@ -1,0 +1,2 @@
+pylint-django==2.4.4
+edx-lint==5.2.0

@@ -1,0 +1,12 @@
+# pylintrc tweaks for use with edx_lint.
+[MASTER]
+ignore = migrations
+load-plugins = edx_lint.pylint,pylint_django,pylint_celery
+
+[MESSAGES CONTROL]
+disable =
+    django-not-configured,
+
+[BASIC]
+# Removing test_.+ from no-docstring-rgx to allow for test methods to be documented.
+no-docstring-rgx = __.*__$|setUp$|setUpClass$|tearDown$|tearDownClass$|Meta$

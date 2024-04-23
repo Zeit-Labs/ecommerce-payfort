@@ -1,0 +1,38 @@
+{% extends "edx/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <style>
+        .centered-content {
+            text-align: center;
+            margin-top: 2em;
+        }
+    </style>
+    <div class="centered-content">
+        <h1>{% trans "Redirecting to the Payment Gateway..." %}</h1>
+    </div>
+
+    <form action="https://sbcheckout.payfort.com/FortAPI/paymentPage" method="post" name="payment_form">
+        <input type="hidden" name="command" value="{{ command }}">
+        <input type="hidden" name="access_code" value="{{ access_code }}">
+        <input type="hidden" name="merchant_identifier" value="{{ merchant_identifier }}">
+        <input type="hidden" name="merchant_reference" value="{{ merchant_reference }}">
+        <input type="hidden" name="amount" value="{{ amount }}">
+        <input type="hidden" name="currency" value="{{ currency }}">
+        <input type="hidden" name="language" value="{{ language }}">
+        <input type="hidden" name="customer_email" value="{{ customer_email }}">
+        <input type="hidden" name="customer_ip" value="{{ customer_ip }}">
+        <input type="hidden" name="order_description" value="{{ order_description }}">
+        <input type="hidden" name="signature" value="{{ signature }}">
+        <input type="hidden" name="customer_name" value="{{ customer_name }}">
+        <input type="hidden" name="return_url" value="{{ return_url }}">
+    </form>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        window.onload = function() {
+            document.payment_form.submit();
+        };
+    </script>
+{% endblock %}
