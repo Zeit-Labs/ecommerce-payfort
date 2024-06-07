@@ -12,10 +12,16 @@ download_ecommerce_requirements:
 
 
 tests:  ## Run unit and integration tests
-	tox -e py38
-
-unit_tests:  ## Run unit tests
-	tox -e py38 -- tests/unit
+	tox -e py38-tests
 
 quality:  ## Run code quality checks
-	tox -e flake8
+	tox -e py38-quality
+
+translation.requirements:
+	pip install -r requirements/translation.txt
+
+translation.extract:
+	i18n_tool extract --no-segment
+
+translation.compile:
+	i18n_tool generate

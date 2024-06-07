@@ -21,3 +21,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: ecommerce_payfort/processors.py:22
+msgid "Checkout with credit card"
+msgstr "الدفع ببطاقة الائتمان"
+
+#: ecommerce_payfort/templates/payfort_payment/form.html:12
+msgid "Redirecting to the Payment Gateway..."
+msgstr "إعادة توجيه إلى بوابة الدفع..."
+
+#: ecommerce_payfort/templates/payfort_payment/handle_format_error.html:12
+#: ecommerce_payfort/templates/payfort_payment/handle_internal_error.html:12
+msgid "This is unfortunate and not expected!"
+msgstr "هذا مؤسف وغير متوقع!"
+
+#: ecommerce_payfort/templates/payfort_payment/handle_format_error.html:14
+msgid ""
+"The response came from the payment gateway is malformed but flagged as "
+"succeeded! We're are not sure if your account has been charged or not! The "
+"administrator has been notified and will investigate the issue shortly"
+msgstr ""
+"الرد الذي جاء من بوابة الدفع غير صحيح ولكنه يحتوي علامة الدفع الناجح! "
+"لسنا متأكدين مما إذا تم اقتصاص المبلغ من حسابك أم لا! "
+"تم إخطار الآدمن وسيقوم بالتحقيق في القضية قريباً"
+
+#: ecommerce_payfort/templates/payfort_payment/handle_format_error.html:16
+#: ecommerce_payfort/templates/payfort_payment/handle_internal_error.html:16
+msgid ""
+"Please do not submit a purchase again before contacting the administrator"
+msgstr "الرجاء عدم إعادة تقديم طلب شراء مرة أخرى قبل الاتصال بالآدمن"
+
+#: ecommerce_payfort/templates/payfort_payment/handle_format_error.html:19
+#: ecommerce_payfort/templates/payfort_payment/handle_internal_error.html:18
+#: ecommerce_payfort/templates/payfort_payment/wait_feedback.html:14
+msgid "For your reference, the payment ID is:"
+msgstr "لمعلوماتك، رقم الدفع هو:"
+
+#: ecommerce_payfort/templates/payfort_payment/handle_internal_error.html:14
+msgid ""
+"The payment has been processed successfully, but we had an unexpected error "
+"while submitting the payment information to the server. The administrator "
+"has been notified and will investigate the issue."
+msgstr ""
+"الدفع تم معالجته بنجاح، ولكن واجهنا خطأ غير متوقع أثناء تثبيت معلومات الدفع في الخادم. "
+"تم إخطار الآدمن وسيقوم بالتحقيق في القضية."
+
+#: ecommerce_payfort/templates/payfort_payment/wait_feedback.html:12
+msgid "Payment succeeded. Processing enrollment.. please wait.."
+msgstr "الدفع نجح. جاري معالجة التسجيل.. الرجاء الانتظار.."

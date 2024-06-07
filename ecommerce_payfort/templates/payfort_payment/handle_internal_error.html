@@ -1,0 +1,21 @@
+{% extends "edx/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <style>
+        .centered-content {
+            text-align: center;
+            margin-top: 2em;
+        }
+    </style>
+    <div class="centered-content">
+        <h1>{% trans "This is unfortunate and not expected!" %}</h1>
+
+        <p>{% trans "The payment has been processed successfully, but we had an unexpected error while submitting the payment information to the server. The administrator has been notified and will investigate the issue." %}</p>
+
+        <p><strong>{% trans "Please do not submit a purchase again before contacting the administrator" %}</strong></p>
+
+        <p>{% trans "For your reference, the payment ID is:" %} <strong>{{ merchant_reference }}</strong></p>
+    </div>
+
+{% endblock %}

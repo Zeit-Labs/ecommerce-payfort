@@ -1,0 +1,23 @@
+{% extends "edx/base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <style>
+        .centered-content {
+            text-align: center;
+            margin-top: 2em;
+        }
+    </style>
+    <div class="centered-content">
+        <h1>{% trans "This is unfortunate and not expected!" %}</h1>
+
+        <p>{% trans "The response came from the payment gateway is malformed but flagged as succeeded! We're are not sure if your account has been charged or not! The administrator has been notified and will investigate the issue shortly" %}</p>
+
+        <p><strong>{% trans "Please do not submit a purchase again before contacting the administrator" %}</strong></p>
+
+        {% if reference != "none" %}
+          <p>{% trans "For your reference, the payment ID is:" %} <strong>{{ reference }}</strong></p>
+        {% endif %}
+    </div>
+
+{% endblock %}
